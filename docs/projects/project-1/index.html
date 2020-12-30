@@ -19,43 +19,41 @@
 </head>
 
 <body class="leading-normal tracking-normal font-sans">
-  <div class="container mt-8">
-    <div class="mx-4 md:mx-auto">
-      <p class="font-bold pb-8 pl-2 uppercase text-2xl">Kaat Somers</p>
+  <div class="container mx-4 md:mx-auto my-8 flex flex-col md:flex-row items-baseline">
+    <a href="/" class="flex-shrink-0 pl-2 font-bold uppercase text-2xl hover:underline">Kaat Somers</a>
+    <div class="md:pl-8 pl-2 md:pt-0 pt-2 flex-grow md:text-left text-right">
+      <a href="contact" class="hover:underline">contact</a>
     </div>
-    
-<div x-data="s = slider()" x-init="$refs.slider.scrollLeft = 0">
-    <div class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
+  </div>
+  
+<div x-data="s = slider()" x-init="() => init()">
+    <div class="h-56 md:h-96" x-show="!loaded"></div>
+    <div x-show.transition.opacity="loaded" class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
         
-        <div class="flex-shrink-0 pr-4" id="item-1">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg" class="h-40" />
+        <div class="flex-shrink-0 pr-2" id="item-1">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg" class="h-56 md:h-96" />
             <p class="m-2">Test 1</p>
         </div>
         
-        <div class="flex-shrink-0 pr-4" id="item-2">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257083/bjjwalnq7tz2ibdf3ljv.jpg" class="h-40" />
+        <div class="flex-shrink-0 pr-2" id="item-2">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257083/bjjwalnq7tz2ibdf3ljv.jpg" class="h-56 md:h-96" />
             <p class="m-2">Test 2</p>
         </div>
         
-        <div class="flex-shrink-0 " id="item-3">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257099/wxx2yrlf2e62epufdsni.jpg" class="h-40" />
+        <div class="flex-shrink-0 pr-2" id="item-3">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257099/wxx2yrlf2e62epufdsni.jpg" class="h-56 md:h-96" />
             <p class="m-2">Test 3</p>
         </div>
         
+        <div class="flex-shrink-0 " id="item-4">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609332524/wtvmdgnt1oegfkzdr71x.png" class="h-56 md:h-96" />
+            <p class="m-2">Test 4</p>
+        </div>
+        
     </div>
-    <!-- <div class="p-4 flex items-center justify-center flex-1">
-        <button
-            class="outline-none focus:outline-none rounded-full mx-4 text-black"
-            x-on:click="move((a, b) => a-b)">
-        </button>
-        <button
-            class="outline-none focus:outline-none rounded-full mx-4 text-black"
-            x-on:click="move((a,b) => a+b)">
-        </button>
-    </div> -->
 </div>
 
-<div class="m-4 md:mx-auto">
+<div class="container m-4 md:mx-auto">
     <p class="mb-3 text-xl">Project 1</p>
     <p>Dit is een testproject</p>
 </div>
@@ -63,15 +61,16 @@
 <script>
 function slider() {
     return {
-        active: 0,
-        move: function(agg) {
-            this.active = agg(this.active, 1)
-            this.active = Math.max(0, this.active)
-            this.active = Math.min(this.items.length-1, this.active)
-            
-            image = document.getElementById("item-"+this.active)
-            this.$refs.slider.scrollLeft += image.getBoundingClientRect().left
-        }
+        init: function() {
+            document.onreadystatechange = () => {
+                if (document.readyState === 'complete') {
+                    this.loaded = true;
+                    this.$refs.slider.scrollLeft = 0; 
+                    // this.$nextTick(() => this.$refs.slider.scrollLeft += this.$refs.slider.getBoundingClientRect().width);
+                }
+            };              
+        },
+        loaded: false
     }
 }
 </script>
@@ -80,7 +79,8 @@ function slider() {
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
 .snap::-webkit-scrollbar {
     display: none;
@@ -90,6 +90,5 @@ function slider() {
 }
 </style>
 
-  </div>
 </body>
 </html>
