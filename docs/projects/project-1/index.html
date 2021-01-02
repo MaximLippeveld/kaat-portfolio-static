@@ -19,10 +19,20 @@
 </head>
 
 <body class="leading-normal tracking-normal font-sans">
-  <div class="container mx-4 md:mx-auto my-8 flex flex-col md:flex-row items-baseline">
-    <a href="/" class="flex-shrink-0 pl-2 font-bold uppercase text-2xl hover:underline">Kaat Somers</a>
-    <div class="md:pl-8 pl-2 md:pt-0 pt-2 flex-grow md:text-left text-right">
+  <div x-data="n = navigation()" class="md:flex md:items-baseline container md:mx-auto my-8 md:px-0 px-4" x-cloack>
+    <div class="flex flex-no-wrap items-center justify-left">
+      <a href="/" class="font-bold uppercase text-2xl pr-3 hover:underline">Kaat Somers</a>
+      <svg :class="{ 'transform rotate-180' : !collapseNav }" class="md:hidden cursor-pointer h-6 h-6 text-black rounded-full flex-shrink" @click="collapseNav = !collapseNav" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+    <div x-show="!collapseNav" class="md:pl-8 pl-2 md:pt-0 pt-2 col-span-2 flex flex-col">
       <a href="contact" class="hover:underline">contact</a>
+<a href="bio" class="hover:underline">bio</a>
+    </div>
+    <div class="hidden md:block">
+      <a href="contact" class="hover:underline">contact</a>
+<a href="bio" class="hover:underline">bio</a>
     </div>
   </div>
   
@@ -53,7 +63,7 @@
     </div>
 </div>
 
-<div class="container m-4 md:mx-auto">
+<div class="container my-4 px-4 md:mx-auto">
     <p class="mb-3 text-xl">Project 1</p>
     <p>Dit is een testproject</p>
 </div>
@@ -90,5 +100,12 @@ function slider() {
 }
 </style>
 
+  <script>
+    function navigation() {
+      return {
+        collapseNav: true
+      }
+    }
+  </script>
 </body>
 </html>
