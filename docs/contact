@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Projects</title>
+  <title>Contact</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="">
@@ -34,17 +34,23 @@
     </div>
   </div>
   
-<div class="container mx-4 md:mx-auto">
-    
-    <div>
-        <a href="/projects/project-1/" class="hover:underline">Project 1</a>
-    </div>
-    
+
+<div class="container my-4 px-4 md:mx-auto">
+
+    <p class="mb-4 font-bold font-large">Contact</p>
+
+    <form class="flex flex-col md:w-1/2" action="https://app.99inbound.com/api/e/i1Jq63eM" method="POST" target="_self">
+        <input class="mb-2 p-2 bg-gray" type="email" name="email" placeholder="E-mail">
+        <input class="mb-2 p-2 bg-gray" type="text" name="name" placeholder="Naam">
+        <textarea class="mb-2 p-2 bg-gray" type="textarea" name="text" placeholder="Boodschap"></textarea>
+        <button class="p-2 md:w-1/2 bg-gray-200">Verzenden</button>
+    </form>  
+
+    <p class="mt-4">
+        <a href="mailto:test@test.be">test@test.be</a>
+    </p>
 </div>
 
-<script>
-
-</script>
 
   <script>
     function navigation() {
