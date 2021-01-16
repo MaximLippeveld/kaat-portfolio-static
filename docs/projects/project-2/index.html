@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Projects</title>
+  <title>Project 2</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="">
@@ -36,27 +36,54 @@
     </div>
   </div>
   
-<div class="container px-4 md:mx-auto grid gap-4 grid-cols-4 grid-flow-row">
-    
-    <div class="">
-        <a href="/projects/project-2/" class="flex flex-col hover:underline">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1610810296/ljf7qtvfwo93jkcyz5yf.jpg" alt="foto" />
-            <span>Project 2</span>
-        </a>
+<div x-data="s = slider()" x-init="() => init()">
+    <div class="h-56 md:h-96" x-show="!loaded"></div>
+    <div x-show.transition.opacity="loaded" class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
+        
+        <div class="flex-shrink-0 " id="item-1">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1610810296/ljf7qtvfwo93jkcyz5yf.jpg" class="h-56 md:h-96" />
+            <p class="m-2">foto</p>
+        </div>
+        
     </div>
-    
-    <div class="">
-        <a href="/projects/project-1/" class="flex flex-col hover:underline">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg" alt="Test 1" />
-            <span>Project 1</span>
-        </a>
-    </div>
-    
+</div>
+
+<div class="container my-4 px-4 md:mx-auto">
+    <p class="mb-3 text-xl">Project 2</p>
+    <p>Nog een project</p>
 </div>
 
 <script>
-
+function slider() {
+    return {
+        init: function() {
+            document.onreadystatechange = () => {
+                if (document.readyState === 'complete') {
+                    this.loaded = true;
+                    this.$refs.slider.scrollLeft = 0; 
+                    // this.$nextTick(() => this.$refs.slider.scrollLeft += this.$refs.slider.getBoundingClientRect().width);
+                }
+            };              
+        },
+        loaded: false
+    }
+}
 </script>
+<style>
+.snap {
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+.snap::-webkit-scrollbar {
+    display: none;
+}    
+.snap > div {
+    scroll-snap-align: center;
+}
+</style>
 
   <script>
     function navigation() {
