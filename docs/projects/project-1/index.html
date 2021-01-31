@@ -39,26 +39,29 @@
 <div x-data="s = slider()" x-init="() => init()">
     <div class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
         
-        <div x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-1">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg" class="h-56 md:h-96" />
+        <div @click="loadLightbox('http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg')" x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-1">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg" class="cursor-zoom-in h-56 md:h-96" />
             <p class="m-2">Test 1</p>
         </div>
         
-        <div x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-2">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257083/bjjwalnq7tz2ibdf3ljv.jpg" class="h-56 md:h-96" />
+        <div @click="loadLightbox('http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257083/bjjwalnq7tz2ibdf3ljv.jpg')" x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-2">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257083/bjjwalnq7tz2ibdf3ljv.jpg" class="cursor-zoom-in h-56 md:h-96" />
             <p class="m-2">Test 2</p>
         </div>
         
-        <div x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-3">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257099/wxx2yrlf2e62epufdsni.jpg" class="h-56 md:h-96" />
+        <div @click="loadLightbox('http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257099/wxx2yrlf2e62epufdsni.jpg')" x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-3">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257099/wxx2yrlf2e62epufdsni.jpg" class="cursor-zoom-in h-56 md:h-96" />
             <p class="m-2">Test 3</p>
         </div>
         
-        <div x-show.transition.opacity="loaded" class="flex-shrink-0 " id="item-4">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609332524/wtvmdgnt1oegfkzdr71x.png" class="h-56 md:h-96" />
+        <div @click="loadLightbox('http://res.cloudinary.com/kaat-portfolio/image/upload/v1609332524/wtvmdgnt1oegfkzdr71x.png')" x-show.transition.opacity="loaded" class="flex-shrink-0 " id="item-4">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609332524/wtvmdgnt1oegfkzdr71x.png" class="cursor-zoom-in h-56 md:h-96" />
             <p class="m-2">Test 4</p>
         </div>
         
+    </div>
+    <div x-show="lightbox" @click="lightbox = !lightbox" class="absolute h-full w-full top-0 flex content-center bg-opacity-50 bg-white cursor-zoom-out">
+        <img class="w-6/12 m-auto" :src="src" />
     </div>
 </div>
 
@@ -70,6 +73,12 @@
 <script>
 function slider() {
     return {
+        lightbox: false,
+        src: "",
+        loadLightbox: function(src) {
+            this.src = src;
+            this.lightbox = true;
+        },
         init: function() {
             document.onreadystatechange = () => {
                 if (document.readyState === 'complete') {

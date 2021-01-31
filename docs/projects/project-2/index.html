@@ -39,11 +39,14 @@
 <div x-data="s = slider()" x-init="() => init()">
     <div class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
         
-        <div x-show.transition.opacity="loaded" class="flex-shrink-0 " id="item-1">
-            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1610810296/ljf7qtvfwo93jkcyz5yf.jpg" class="h-56 md:h-96" />
+        <div @click="loadLightbox('http://res.cloudinary.com/kaat-portfolio/image/upload/v1610810296/ljf7qtvfwo93jkcyz5yf.jpg')" x-show.transition.opacity="loaded" class="flex-shrink-0 " id="item-1">
+            <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1610810296/ljf7qtvfwo93jkcyz5yf.jpg" class="cursor-zoom-in h-56 md:h-96" />
             <p class="m-2">foto</p>
         </div>
         
+    </div>
+    <div x-show="lightbox" @click="lightbox = !lightbox" class="absolute h-full w-full top-0 flex content-center bg-opacity-50 bg-white cursor-zoom-out">
+        <img class="w-6/12 m-auto" :src="src" />
     </div>
 </div>
 
@@ -55,6 +58,12 @@
 <script>
 function slider() {
     return {
+        lightbox: false,
+        src: "",
+        loadLightbox: function(src) {
+            this.src = src;
+            this.lightbox = true;
+        },
         init: function() {
             document.onreadystatechange = () => {
                 if (document.readyState === 'complete') {
