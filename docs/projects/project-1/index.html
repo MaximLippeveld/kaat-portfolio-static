@@ -27,35 +27,34 @@
       </svg>
     </div>
     <div x-show="!collapseNav" class="block md:hidden md:pl-8 pl-2 md:pt-0 pt-2 col-span-2 flex flex-col" x-cloack>
-      <a href="contact" class="hover:underline">contact</a>
-<a href="bio" class="hover:underline">bio</a>
+      <a href="/contact/" class="hover:underline">contact</a>
+<a href="/bio/" class="hover:underline">bio</a>
     </div>
     <div class="hidden md:block" x-cloack>
-      <a href="contact" class="hover:underline">contact</a>
-<a href="bio" class="hover:underline">bio</a>
+      <a href="/contact/" class="hover:underline">contact</a>
+<a href="/bio/" class="hover:underline">bio</a>
     </div>
   </div>
   
 <div x-data="s = slider()" x-init="() => init()">
-    <div class="h-56 md:h-96" x-show="!loaded"></div>
-    <div x-show.transition.opacity="loaded" class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
+    <div class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
         
-        <div class="flex-shrink-0 pr-2" id="item-1">
+        <div x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-1">
             <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257070/wioybjyhh7jl5bfjdj6x.jpg" class="h-56 md:h-96" />
             <p class="m-2">Test 1</p>
         </div>
         
-        <div class="flex-shrink-0 pr-2" id="item-2">
+        <div x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-2">
             <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257083/bjjwalnq7tz2ibdf3ljv.jpg" class="h-56 md:h-96" />
             <p class="m-2">Test 2</p>
         </div>
         
-        <div class="flex-shrink-0 pr-2" id="item-3">
+        <div x-show.transition.opacity="loaded" class="flex-shrink-0 pr-2" id="item-3">
             <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609257099/wxx2yrlf2e62epufdsni.jpg" class="h-56 md:h-96" />
             <p class="m-2">Test 3</p>
         </div>
         
-        <div class="flex-shrink-0 " id="item-4">
+        <div x-show.transition.opacity="loaded" class="flex-shrink-0 " id="item-4">
             <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1609332524/wtvmdgnt1oegfkzdr71x.png" class="h-56 md:h-96" />
             <p class="m-2">Test 4</p>
         </div>

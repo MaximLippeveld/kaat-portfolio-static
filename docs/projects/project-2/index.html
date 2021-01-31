@@ -27,20 +27,19 @@
       </svg>
     </div>
     <div x-show="!collapseNav" class="block md:hidden md:pl-8 pl-2 md:pt-0 pt-2 col-span-2 flex flex-col" x-cloack>
-      <a href="contact" class="hover:underline">contact</a>
-<a href="bio" class="hover:underline">bio</a>
+      <a href="/contact/" class="hover:underline">contact</a>
+<a href="/bio/" class="hover:underline">bio</a>
     </div>
     <div class="hidden md:block" x-cloack>
-      <a href="contact" class="hover:underline">contact</a>
-<a href="bio" class="hover:underline">bio</a>
+      <a href="/contact/" class="hover:underline">contact</a>
+<a href="/bio/" class="hover:underline">bio</a>
     </div>
   </div>
   
 <div x-data="s = slider()" x-init="() => init()">
-    <div class="h-56 md:h-96" x-show="!loaded"></div>
-    <div x-show.transition.opacity="loaded" class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
+    <div class="snap overflow-auto relative flex-no-wrap flex transition-all" x-ref="slider">
         
-        <div class="flex-shrink-0 " id="item-1">
+        <div x-show.transition.opacity="loaded" class="flex-shrink-0 " id="item-1">
             <img src="http://res.cloudinary.com/kaat-portfolio/image/upload/v1610810296/ljf7qtvfwo93jkcyz5yf.jpg" class="h-56 md:h-96" />
             <p class="m-2">foto</p>
         </div>
